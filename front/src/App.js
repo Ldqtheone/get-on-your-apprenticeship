@@ -5,18 +5,31 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { apiResponse: "" };
+    this.state = { apiResponse: [] } ;
   }
 
   callAPI() {
     fetch("http://localhost:3000/dummy/students")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }))
-      .catch(err => err);
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: JSON.parse(res) },()=>console.log(this.state)))
+        .catch(err => err);
   }
 
   componentWillMount() {
     this.callAPI();
+  }
+
+  generateStudentList(){
+      return (
+          this.state.apiResponse.map((listValue, index) => {
+              return (
+                  <tr key={index}>
+                      <td>{listValue.name}</td>
+                      <td>{listValue.house}</td>
+                  </tr>
+              );
+          })
+      )
   }
 
   render() {
@@ -27,7 +40,17 @@ class App extends Component {
           <p>
             Here is a list of all students:
         </p>
-        <p className="App-intro">{this.state.apiResponse}</p>
+        <table>
+            <thead>
+               <tr>
+                   <th>Nom</th>
+                   <th>Maison</th>
+               </tr>
+            </thead>
+            <tbody>
+                {this.generateStudentList()}
+            </tbody>
+        </table>
         </header>
       </div>
     );
