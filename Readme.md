@@ -1,4 +1,3 @@
-# Teolia - Get on your Apprenticeship !
 
 Ce projet est conçu comme un tp itératif te permettant de tester tes connaissances et d'apprendre ce qui te manque pour l'instant via des exemples simples.
 

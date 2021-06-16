@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import logo from './hogwarts.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import StudentCard from "./components/StudentCard";
 
 class App extends Component {
     constructor(props) {
@@ -14,31 +14,17 @@ class App extends Component {
     }
 
     callAPI() {
-        fetch("http://localhost:3000/dummy/students")
+        fetch("http://localhost:3000/real/students")
             .then(res => res.json())
             .then(data => this.setState({apiResponse: data}))
             .catch(err => err);
     }
 
     displayStudent() {
-
         return this.state.apiResponse.map((student, index) => {
             return (
-                <Col xs={12} sm={6}>
-                    <Card
-                        bg={"dark"}
-                        key={index}
-                        text={'white'}
-
-                        className={"mb-2"}
-                    >
-                        <Card.Header>{student.name}</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
-                                House : {student.house}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+                <Col xs={12} sm={6} key={index}>
+                    <StudentCard {...student}/>
                 </Col>
             );
         });
@@ -47,7 +33,6 @@ class App extends Component {
     componentDidMount() {
         this.callAPI();
     }
-
 
     render() {
         return (
