@@ -15,9 +15,26 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/students', async (req, res)=> {
+
+    let house = req.query.house;
+
     try {
         const students = await findStudents();
-        res.json(students)
+
+        if(house){
+
+            let studentByHouse = [];
+
+            students.map((student, index) => {
+                if(house.toLocaleLowerCase() === student.house.toLocaleLowerCase()){
+                    studentByHouse[index] =  student;
+                }
+            });
+
+            res.json(studentByHouse.filter(function () { return true }))
+        }else{
+            res.json(students)
+        }
     } catch (err) {
         res.json({message: err})
     }
