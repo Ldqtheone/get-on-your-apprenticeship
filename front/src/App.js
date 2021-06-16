@@ -6,14 +6,19 @@ import Col from "react-bootstrap/Col";
 import StudentCard from "./components/StudentCard";
 import {getAllStudents, getAllStudentsByHouse, getRandomStudent} from "./services/ApiServices";
 import ListCharacters from "./components/ListCharacters";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             allStudents: [],
-            randomResponse: {}
+            randomResponse: null,
+            selectedFilter: "All"
         };
+        this.availableFilter = ['All', 'Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw']
     }
 
     handleRandomStudent() {
@@ -22,20 +27,26 @@ class App extends Component {
         })
     }
 
-    filterByHouse(house){
-        getAllStudentsByHouse(house).then(data => {
-            this.setState({allStudents: data})
-        })
+    handleFilter(filter) {
+        this.setState({selectedFilter: filter})
+        if (filter === "All") {
+            this.loadAllStudents()
+        } else {
+            getAllStudentsByHouse(filter).then(data => {
+                this.setState({allStudents: data})
+            })
+        }
+
     }
 
-    getAllStudents(){
+    loadAllStudents() {
         getAllStudents().then(data => {
             this.setState({allStudents: data})
         })
     }
 
     componentDidMount() {
-       this.getAllStudents()
+        this.loadAllStudents()
     }
 
     render() {
@@ -57,33 +68,19 @@ class App extends Component {
                     <p>
                         Here is a list of all students:
                     </p>
-                    <p>
-                        <button onClick={() => {
-                            this.filterByHouse("Gryffindor")
-                        }}>
-                            Gryffindor
-                        </button>
-                        <button onClick={() => {
-                            this.filterByHouse("Slytherin")
-                        }}>
-                            Slytherin
-                        </button>
-                        <button onClick={() => {
-                            this.filterByHouse("Hufflepuff")
-                        }}>
-                            Hufflepuff
-                        </button>
-                        <button onClick={() => {
-                            this.filterByHouse("Ravenclaw")
-                        }}>
-                            Ravenclaw
-                        </button>
-                        <button onClick={() => {
-                            this.getAllStudents()
-                        }}>
-                            All Houses
-                        </button>
-                    </p>
+                    <DropdownButton
+                        key={this.state.selectedFilter}
+                        title={this.state.selectedFilter}
+                    >
+                        {this.availableFilter.map((filter) =>
+                            <Dropdown.Item
+                                eventKey={filter}
+                                onClick={() => this.handleFilter(filter)}
+                                selected={this.state.selectedFilter === filter}>{filter}
+                            </Dropdown.Item>
+                        )}
+                    </DropdownButton>
+
                     <ListCharacters characters={this.state.allStudents}/>
                 </header>
             </div>

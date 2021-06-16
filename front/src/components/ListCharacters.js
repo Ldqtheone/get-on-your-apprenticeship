@@ -13,7 +13,7 @@ export default function ListCharacters(props) {
     function displayCharacters() {
         return props.characters.map((character, index) => {
             return (
-                <Col xs={12} sm={6} key={index}>
+                <Col xs={12} sm={6} lg={4} key={index}>
                     <StudentCard {...character}/>
                 </Col>
             );
