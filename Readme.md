@@ -6,6 +6,8 @@ Ce projet est conçu comme un tp itératif te permettant de tester tes connaissa
 > ⚠️  **ATTENTION**: N'aie crainte, tu n'as pas besoin de tout faire avant de revenir vers nous avec tes questions et ou l'envie de présenter ton projet. 
 > D'ailleurs, on t'invite à rejoindre notre Discord pour poser tes questions ou montrer où tu en es dans ton projet: https://discord.gg/8KdQZZCFNK
 
+> Github Page => https://ldqtheone.github.io/get-on-your-apprenticeship/
+> Heroku API => https://frozen-ravine-59943.herokuapp.com/
 ## Table des matières
 * [Teolia - Get on your Apprenticeship !](#teolia---get-on-your-apprenticeship-)
 * [Table des matières](#table-des-matières)
