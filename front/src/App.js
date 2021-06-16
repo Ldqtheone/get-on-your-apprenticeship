@@ -2,36 +2,30 @@ import React, {Component} from 'react';
 import logo from './hogwarts.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import StudentCard from "./components/StudentCard";
+import {getAllStudents, getRandomStudent} from "./services/ApiServices";
+import ListCharacters from "./components/ListCharacters";
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {apiResponse: []};
+        this.state = {
+            allStudents: [],
+            randomResponse: {}
+        };
     }
 
-    callAPI() {
-        fetch("http://localhost:3000/real/students")
-            .then(res => res.json())
-            .then(data => this.setState({apiResponse: data}))
-            .catch(err => err);
-    }
-
-    displayStudent() {
-        return this.state.apiResponse.map((student, index) => {
-            return (
-                <Col xs={12} sm={6} key={index}>
-                    <StudentCard {...student}/>
-                </Col>
-            );
-        });
+    handleRandomStudent() {
+        getRandomStudent().then(data => {
+            this.setState({randomResponse: data})
+        })
     }
 
     componentDidMount() {
-        this.callAPI();
+        getAllStudents().then(data => {
+            this.setState({allStudents: data})
+        })
     }
 
     render() {
@@ -39,14 +33,21 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
+
+                    {this.state.randomResponse &&
+                    <Col xs={12} sm={6}>
+                        <StudentCard {...this.state.randomResponse}/>
+                    </Col>
+                    }
+                    <button onClick={() => {
+                        this.handleRandomStudent()
+                    }}>
+                        Choose your student for the cup
+                    </button>
                     <p>
                         Here is a list of all students:
                     </p>
-                    <Container>
-                        <Row>
-                            {this.displayStudent()}
-                        </Row>
-                    </Container>
+                    <ListCharacters characters={this.state.allStudents}/>
                 </header>
             </div>
         );

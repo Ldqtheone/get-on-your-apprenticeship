@@ -17,8 +17,16 @@ router.get('/', function (req, res, next) {
 router.get('/students', async (req, res)=> {
     try {
         const students = await findStudents();
-        console.log(students, 'in the get');
         res.json(students)
+    } catch (err) {
+        res.json({message: err})
+    }
+})
+
+router.get('/randomstudent', async (req, res)=> {
+    try {
+        const students = await findStudents();
+        res.json(students[Math.floor(Math.random() * students.length)])
     } catch (err) {
         res.json({message: err})
     }
