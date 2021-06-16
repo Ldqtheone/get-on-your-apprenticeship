@@ -6,9 +6,8 @@ import Col from "react-bootstrap/Col";
 import StudentCard from "./components/StudentCard";
 import {getAllStudents, getAllStudentsByHouse, getRandomStudent} from "./services/ApiServices";
 import ListCharacters from "./components/ListCharacters";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-
+import ListHouses from "./components/ListHouses";
 
 class App extends Component {
     constructor(props) {
@@ -68,18 +67,15 @@ class App extends Component {
                     <p>
                         Here is a list of all students:
                     </p>
-                    <DropdownButton
-                        key={this.state.selectedFilter}
-                        title={this.state.selectedFilter}
-                    >
-                        {this.availableFilter.map((filter) =>
-                            <Dropdown.Item
-                                eventKey={filter}
-                                onClick={() => this.handleFilter(filter)}
-                                selected={this.state.selectedFilter === filter}>{filter}
-                            </Dropdown.Item>
-                        )}
-                    </DropdownButton>
+                    
+                    <ListHouses key={this.state.selectedFilter} title={this.state.selectedFilter}
+                                strings={this.availableFilter} callbackfn={(filter) =>
+                        <Dropdown.Item
+                            eventKey={filter}
+                            onClick={() => this.handleFilter(filter)}
+                            selected={this.state.selectedFilter === filter}>{filter}
+                        </Dropdown.Item>}
+                    />
 
                     <ListCharacters characters={this.state.allStudents}/>
                 </header>
