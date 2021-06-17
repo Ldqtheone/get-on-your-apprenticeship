@@ -5,7 +5,7 @@ const Firestore = require('@google-cloud/firestore');
 
 const db = new Firestore({
     projectId: 'teoliatest-317110',
-    keyFilename: 'C:/Users/cweib/Downloads/cle_cloud_teolia.json',
+    keyFilename: 'cle_cloud_teolia.json',
 });
 
 const findStudents = async () => {
