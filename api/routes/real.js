@@ -53,7 +53,8 @@ router.get('/students', async (req, res)=> {
     let type = req.query.type;
 
     try {
-        const students = type === "firebase" ? await findStudentsWithFirebase() : await findStudents();
+        //const students = type === "firebase" ? await findStudentsWithFirebase() : await findStudents();
+        const students = await findStudentsWithFirebase();
 
         if(house){
 
