@@ -1,0 +1,7 @@
+{
+  "baseUrl": "https://ldqtheone.github.io/get-on-your-apprenticeship",
+  "component": {
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  }
+}
