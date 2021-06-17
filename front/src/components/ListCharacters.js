@@ -7,7 +7,6 @@ import Row from "react-bootstrap/Row";
 
 /**
  *Component ListCharacters
- *
  */
 export default function ListCharacters(props) {
     function displayCharacters() {

@@ -2,7 +2,6 @@ const express = require('express');
 const fetch = require('node-fetch');
 const router = express.Router();
 
-
 const findStudents = async () => {
     const url = "http://hp-api.herokuapp.com/api/characters"
     const response = await fetch(url)
@@ -43,7 +42,15 @@ router.get('/students', async (req, res)=> {
 router.get('/randomstudent', async (req, res)=> {
     try {
         const students = await findStudents();
-        res.json(students[Math.floor(Math.random() * students.length)])
+
+        let randomStudent = students[Math.floor(Math.random() * students.length)];
+
+        do {
+            randomStudent = students[Math.floor(Math.random() * students.length)];
+        } while (!randomStudent.alive || !randomStudent.hogwartsStudent);
+
+        res.json(randomStudent)
+
     } catch (err) {
         res.json({message: err})
     }

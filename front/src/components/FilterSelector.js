@@ -3,10 +3,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import PropTypes from 'prop-types'
 
-
 /**
- *Component FilterSelector
- *
+ * Component FilterSelector
  */
 export default function FilterSelector(props) {
     return (

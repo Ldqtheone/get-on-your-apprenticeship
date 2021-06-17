@@ -54,6 +54,7 @@ export default function StudentCard(props) {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            </ReactCardFlip></div>
+            </ReactCardFlip>
+        </div>
     );
 }

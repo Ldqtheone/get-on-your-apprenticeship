@@ -12,7 +12,6 @@ import Row from "react-bootstrap/Row";
 import FilterSelector from "./components/FilterSelector";
 import Spinner from "react-bootstrap/Spinner";
 
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +37,6 @@ class App extends Component {
         } else {
             this.loadFilteredStudents(filter)
         }
-
     }
 
     loadAllStudents() {
