@@ -2,10 +2,8 @@ import React, {useState} from 'react';
 import ReactCardFlip from "react-card-flip";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import {faDizzy} from "@fortawesome/free-regular-svg-icons/faDizzy";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSchool} from "@fortawesome/free-solid-svg-icons/faSchool";
-import {faUserGraduate} from "@fortawesome/free-solid-svg-icons/faUserGraduate";
+import {faSkullCrossbones} from "@fortawesome/free-solid-svg-icons/faSkullCrossbones";
 
 /**
  *Component StudentCard
@@ -35,7 +33,7 @@ export default function StudentCard(props) {
                         </div>
                         {props.name}
                         {!props.alive &&
-                        <FontAwesomeIcon icon={faDizzy}/>
+                        <FontAwesomeIcon icon={faSkullCrossbones}/>
                         }
                     </Card.Header>
                 </Card>
@@ -50,8 +48,8 @@ export default function StudentCard(props) {
                         <Card.Text>
                             <p> House : {props.house}</p>
                             <p> School's status : {props.hogwartsStudent ? "student" : props.hogwartsStaff ? "staff" : "Not in Hogwarts"}</p>
-                            <p> Patronus : {props.patronus !== "" ? props.patronus : "No Patronus"}</p>
-                            <p> Ancestry : {props.ancestry !== "" ? props.ancestry : "No Ancestry"}</p>
+                            <p> Patronus : {props.patronus !== "" ? props.patronus : "Unknown"}</p>
+                            <p> Ancestry : {props.ancestry !== "" ? props.ancestry : "Unknown"}</p>
                             <p> Actor : {props.actor}</p>
                         </Card.Text>
                     </Card.Body>

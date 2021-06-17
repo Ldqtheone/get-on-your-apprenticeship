@@ -6,8 +6,12 @@ import Col from "react-bootstrap/Col";
 import StudentCard from "./components/StudentCard";
 import {getAllStudents, getAllStudentsByHouse, getRandomStudent} from "./services/ApiServices";
 import ListCharacters from "./components/ListCharacters";
-import Dropdown from "react-bootstrap/Dropdown";
-import ListHouses from "./components/ListHouses";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import FilterSelector from "./components/FilterSelector";
+import Spinner from "react-bootstrap/Spinner";
+
 
 class App extends Component {
     constructor(props) {
@@ -15,7 +19,8 @@ class App extends Component {
         this.state = {
             allStudents: [],
             randomResponse: null,
-            selectedFilter: "All"
+            selectedFilter: "All",
+            isLoading: false,
         };
         this.availableFilter = ['All', 'Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw']
     }
@@ -31,16 +36,26 @@ class App extends Component {
         if (filter === "All") {
             this.loadAllStudents()
         } else {
-            getAllStudentsByHouse(filter).then(data => {
-                this.setState({allStudents: data})
-            })
+            this.loadFilteredStudents(filter)
         }
 
     }
 
     loadAllStudents() {
+        this.setState({isLoading: true})
         getAllStudents().then(data => {
-            this.setState({allStudents: data})
+            this.setState({allStudents: data}, () => {
+                this.setState({isLoading: false})
+            })
+        })
+    }
+
+    loadFilteredStudents(filter) {
+        this.setState({isLoading: true})
+        getAllStudentsByHouse(filter).then(data => {
+            this.setState({allStudents: data}, () => {
+                this.setState({isLoading: false})
+            })
         })
     }
 
@@ -50,36 +65,54 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <Container className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
+                </header>
+                <body>
+
+                <Container className="mt-5">
 
                     {this.state.randomResponse &&
-                    <Col xs={12} sm={6}>
-                        <StudentCard {...this.state.randomResponse}/>
-                    </Col>
+                    <Row className="justify-content-center">
+                        <Col xs={12} sm={6}>
+                            <StudentCard {...this.state.randomResponse}/>
+                        </Col>
+                    </Row>
                     }
-                    <button onClick={() => {
-                        this.handleRandomStudent()
-                    }}>
-                        Choose your student for the cup
-                    </button>
-                    <p>
-                        Here is a list of all students:
-                    </p>
-                    
-                    <ListHouses key={this.state.selectedFilter} title={this.state.selectedFilter}
-                                strings={this.availableFilter} callbackfn={(filter) =>
-                        <Dropdown.Item
-                            eventKey={filter}
-                            onClick={() => this.handleFilter(filter)}
-                            selected={this.state.selectedFilter === filter}>{filter}
-                        </Dropdown.Item>}
-                    />
+                    <Row className="justify-content-center">
+                        <Button onClick={() => {
+                            this.handleRandomStudent()
+                        }}>
+                            Choose your student for the cup
+                        </Button>
+                    </Row>
 
+                </Container>
+                <Container className="mt-5">
+                    <Row>
+                        <Col>
+                            <h2>Here is a list of all Characters:</h2>
+                        </Col>
+                        <Col>
+                            <FilterSelector
+                                handleClick={(filter) => {
+                                    this.handleFilter(filter)
+                                }}
+                                filters={this.availableFilter}
+                                selectedFilter={this.state.selectedFilter}/>
+                        </Col>
+                    </Row>
+                </Container>
+
+                {this.state.isLoading ?
+                    <Spinner animation="border" variant="primary" style={{margin: "20px 50%"}}/>
+                    :
                     <ListCharacters characters={this.state.allStudents}/>
-                </header>
-            </div>
+                }
+
+                </body>
+            </Container>
         );
     }
 }

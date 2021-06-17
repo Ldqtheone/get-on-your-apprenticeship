@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react';
+import React, {useState} from 'react';
 import StudentCard from "./StudentCard";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -20,7 +20,7 @@ export default function ListCharacters(props) {
         });
     }
     return (
-        <Container>
+        <Container className="mt-5">
             <Row>
                 {displayCharacters()}
             </Row>
