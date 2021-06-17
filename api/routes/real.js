@@ -9,7 +9,7 @@ const db = new Firestore({
 });
 
 const findStudents = async () => {
-    const url = "https://frozen-ravine-59943.herokuapp.com/real/students"
+    const url = "http://hp-api.herokuapp.com/api/characters"
     const response = await fetch(url)
 
     return response.json();
