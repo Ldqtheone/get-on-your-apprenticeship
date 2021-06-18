@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/get-on-your-apprenticeship/static/css/main.e4ac1957.chunk.css",
-    "main.js": "/get-on-your-apprenticeship/static/js/main.6fc7bad4.chunk.js",
-    "main.js.map": "/get-on-your-apprenticeship/static/js/main.6fc7bad4.chunk.js.map",
+    "main.css": "/get-on-your-apprenticeship/static/css/main.fdaeba7d.chunk.css",
+    "main.js": "/get-on-your-apprenticeship/static/js/main.817f5af9.chunk.js",
+    "main.js.map": "/get-on-your-apprenticeship/static/js/main.817f5af9.chunk.js.map",
     "runtime-main.js": "/get-on-your-apprenticeship/static/js/runtime-main.f240802e.js",
     "runtime-main.js.map": "/get-on-your-apprenticeship/static/js/runtime-main.f240802e.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/get-on-your-apprenticeship/static/css/2.4c97ca4f.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.b8f169bc.chunk.js.map": "/get-on-your-apprenticeship/static/js/3.b8f169bc.chunk.js.map",
     "index.html": "/get-on-your-apprenticeship/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/get-on-your-apprenticeship/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.e4ac1957.chunk.css.map": "/get-on-your-apprenticeship/static/css/main.e4ac1957.chunk.css.map",
+    "static/css/main.fdaeba7d.chunk.css.map": "/get-on-your-apprenticeship/static/css/main.fdaeba7d.chunk.css.map",
     "static/js/2.2f0befae.chunk.js.LICENSE.txt": "/get-on-your-apprenticeship/static/js/2.2f0befae.chunk.js.LICENSE.txt",
     "static/media/hogwarts.1cf84289.png": "/get-on-your-apprenticeship/static/media/hogwarts.1cf84289.png"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.f240802e.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.2f0befae.chunk.js",
-    "static/css/main.e4ac1957.chunk.css",
-    "static/js/main.6fc7bad4.chunk.js"
+    "static/css/main.fdaeba7d.chunk.css",
+    "static/js/main.817f5af9.chunk.js"
   ]
 }
