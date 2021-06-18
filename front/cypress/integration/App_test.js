@@ -1,6 +1,6 @@
 describe('The Home Page', () => {
 
-    it('sets auth cookie when logging in via form submission', function () {
+    it('Verify homepage access and informations', function () {
 
         cy.visit('/')
 
@@ -10,7 +10,7 @@ describe('The Home Page', () => {
         // Button random student generator
         cy.get('button').should('contain', 'student')
 
-        // UI should reflect this user being logged in
+        // Get H2 title
         cy.get('h2').should('contain', 'Here is a list of all Characters:')
     })
 })

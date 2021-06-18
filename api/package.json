@@ -16,5 +16,12 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.0.4",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.3"
   }
 }
