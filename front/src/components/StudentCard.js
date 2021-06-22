@@ -58,3 +58,15 @@ export default function StudentCard(props) {
         </div>
     );
 }
+
+StudentCard.propTypes = {
+  actor: PropTypes.string.isRequired,
+  alive: PropTypes.bool.isRequired,
+  ancestry: PropTypes.string,
+  hogwartsStaff: PropTypes.any,
+  hogwartsStudent: PropTypes.any.isRequired,
+  house: PropTypes.string,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  patronus: PropTypes.string.isRequired
+}
