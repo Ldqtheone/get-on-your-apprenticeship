@@ -20,6 +20,7 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     working_directory: ~/project/api
+
     steps:
       # Checkout the code as the first step.
       - checkout
@@ -29,7 +30,7 @@ jobs:
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
       # - node/install-packages:
       #     pkg-manager: yarn 
-      - run
+      - run:
           name: Run Build
           command: npm run build
 
