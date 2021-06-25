@@ -31,8 +31,8 @@ jobs:
       #     pkg-manager: yarn 
       - run:
           app-dir: ~/project/api
-          name: Run tests
-          command: npm test
+          name: Run Build
+          command: npm run build
 
 workflows:
   # Below is the definition of your workflow.
